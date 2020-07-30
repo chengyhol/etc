@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let o = {
+            required(data) {
+                return true;
+            },
+            lenEqual(str, len) {
+                let valid = str.length === len;
+                return {
+                    valid,
+                    msg: valid ? "通过" : `长度必须等于${len}`
+                }
+            },
+            lenMin(str, minLen) {
+                let valid = str.length >= minLen;
+                return {
+                    valid,
+                    msg: valid ? "通过" : `长度必须大于${minLen}`
+                }
+            },
+            lenMax(str, maxLen) {
+                let valid = str.length <= maxLen;
+                return {
+                    valid,
+                    msg: valid ? "通过" : `长度必须小于${maxLen}`
+                }
+            },
+            allNumber(str, is = true) {
+                let pattern = /\d+/g;
+                let r = pattern.exec(str);//如果r[0]为空或其长度小于原字符串，则验证不通过
+
+                let valid = (r[0] === str) ? true : false
+
+                return {
+                    valid,
+                    msg: valid ? `验证通过，字段${str}全为数字` : `验证不通过，${str}不全为数字`
+                }
+            },
+            noSpecial(str, is = true) {
+                let pattern = new RegExp("[^\.\(\)]+");
+                let r = pattern.exec(str);
+                let valid = (r[0] == str) ? true : false;
+                return {
+                    valid,
+                    msg: valid? `验证通过，字段${str}不含特殊符号` : `验证不通过，${str}含特殊符号`
+                }
+            }
+        }
+        function validate(obj = {}) {
+            // console.log(obj.rules)
+            let val = Object.keys(obj.rules).every((item, index) => {
+                console.log(`正在验证：${item}`)
+                let r = o[item](obj.data, obj.rules[item]);
+                if (!r.valid) {
+                    console.log(`${obj.data}对于规则${item}未通过验证` + r.msg);
+                }
+                return r;
+                // console.log(o[item])
+            })
+            console.log(val)
+        }
+
+        let base = {//规则集合
+            mobile: {
+                lenMin: 7,
+                lenMax: 11,
+                allNumber: true,
+                noSpecial: true
+            },
+            password: {
+                lenMin: 3,
+                lenMax: 5
+            }
+        }
+
+        let formData = {//要验证的数据
+            mobile: "15254155530(",
+            password: "12345"
+        }
+        // validate({
+        //     rules: base.mobile,
+        //     data: "1525415553"
+        // })
+
+        Object.keys(formData).forEach(item => {
+            console.log(`正在验证数据${item},值为${formData[item]}`)
+            validate({
+                rules: base[item],
+                data: formData[item]
+            })
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

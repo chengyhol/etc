@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="/assets/images/1.jpg" alt="">
+    <script>
+        let vehicleInfo = {
+            plate_num: '鲁GRC986',
+            owner: '程美鹏',
+            vin: 'LDC613P26C1128611',
+            engine_num: '0753937',
+            record: '370701011931'
+        }
+        let vehicle = {
+            plate_num: '鲁GRC986',
+            owner: '程元浩',
+            vin: 'LDC613P26C1128611',
+            engine_num: '0753937',
+            record: '370701011931'
+        }
+
+        Object.keys(vehicleInfo).every(item => {//item=>plate_num,owner,vin,engine_num,record
+            if (vehicleInfo[item] != vehicle[item]) {
+                console.log(`${item}不一致`)
+            }
+            return vehicleInfo[item] == vehicle[item]
+        })
+    </script>
+</body>
+
+</html>

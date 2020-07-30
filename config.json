@@ -1,0 +1,60 @@
+{
+  "miniProgram": {
+    "appid": "wxcfe73654570c1a6d",
+    "secret": "3317544b1df91f40596919f581d7ad47",
+    "api": {
+      "domain": "https://api.weixin.qq.com/",
+      "accessToken": "%scgi-bin/token?grant_type=client_credential&appid=%s&secret=%s",
+      "ocr": "%scv/ocr/%s?access_token=%s",
+      "aiCrop": "%scv/img/aicrop?access_token=%s",
+      "scanQRCode": "%scv/img/qrcode?access_token=%s",
+      "getSessionKey": "%ssns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code"
+    }
+  },
+  "local": {
+    "port": 888
+  },
+  "name": "习近平",
+  "token": {
+    "access_token": "34_fFXYdlJbTIS0QYgsF_TikkcazzFbSw0U1gxrDlM7BmqEHVwZbrnsGxKWtJs0EkBDnK0rJ4LZPoBFOGbm65HuHUqlLW-XiKN9oKEXA8UcbZ138EOBAYuVHQvLbG7Ud6u9dx4EHscosG_XzGhUPRDiAEAVXJ",
+    "expires_in": 60,
+    "capTime": "1591405035"
+  },
+  "mysql": {
+    "my": {
+      "host": "127.0.0.1",
+      "user": "root",
+      "password": "197922",
+      "database": "node",
+      "port": 3308
+    },
+    "vehicle": {
+      "host": "127.0.0.1",
+      "user": "root",
+      "password": "197922",
+      "database": "vehicle",
+      "port": 3308
+    },
+    "bank": {
+      "host": "127.0.0.1",
+      "user": "root",
+      "password": "197922",
+      "database": "bank",
+      "port": 3308
+    }
+  },
+  "redis": {
+    "port": 6379,
+    "host": "127.0.0.1",
+    "password": "197922"
+  },
+  "crypt": {
+    "password": "197922",
+    "salt": "sasuke"
+  },
+  "login": {
+    "token": {
+      "expires_in": 60000
+    }
+  }
+}
